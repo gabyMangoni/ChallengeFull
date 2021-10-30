@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">    
+</head>
+<body>
+    <header class="d-flex"><div class="container">
+      <div class="logo">Control de Gastos</div>
+    <nav><a href="/"> Home</a> / <a href="/operations/in">VER INGRESOS</a> //  <a href="/operations/out">VER EGRESOS</a> / <a href="/create">Alta de comprobantes</a> </nav>
+  </div>
+  </header>
+    <main class="d-flex">
+       
+    
+
+    <div class="container">
+    <div class="cabecero">
+      <div class="presupuesto">
+          <div class="presupuesto_titulo">
+              Presupuesto Disponible
+          </div>
+          <div class="presupuesto_valor" id="presupuesto"> + 2,000.00</div>
+          <div class="presupuesto_ingreso limpiarEstilos">
+              <div class="presupuesto_ingreso--texto">Ingresos</div>
+              <div class="derecha">
+                  <div class="presupuesto_ingreso--valor" id="ingresos">+4,000.00</div>
+              </div>
+          </div>
+          <div class="presupuesto_egreso limpiarEstilos">
+              <div class="presupuesto_egreso--texto">Egresos</div>
+              <div class="derecha limpiarEstilos">
+                  <div class="presupuesto_egreso--valor" id="egresos">- 1,900.00</div>
+              </div>
+          </div>
+      </div>
+  </div>
+<br><br>
+    
+    
+      
+      </div>
+      <div class="container flex">
+        <div class="table-left">
+          <h1>Ingresos</h1>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Concepto</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% operations.forEach((operation, i) => { %>
+              <% if (operation.type.id == 1) { %>
+                <%   if ( operationsIn.length < 10 ) { %>
+                  <%    operationsIn.push(operation); %>
+      
+            <tr>
+              <td scope="row"><a href="/edit/<%= operation.id %>"><%= operation.concept %></a></th>
+              <td><a href="/edit/<%= operation.id %>"><%= operation.amount %></a></td>
+              <td><a href="/edit/<%= operation.id %>"><%= operation.date.toLocaleDateString() %></a></td>
+              <td><a href="/edit/<%= operation.id %>"><%= operation.category.name %> </a></td>
+            </tr>
+            <% } %>
+            <% } %>
+            <% })%> 
+          </tbody>
+        </table>
+      </div>
+      <div class="table-right">
+        <h1>Egresos</h1>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Concepto</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% operations.forEach((operation, i) => { %>
+              <% if (operation.type.id == 2) { %>
+                <%   if ( operationsOut.length < 10 ) { %>
+                  <%    operationsOut.push(operation); %>
+            <tr>
+              <td scope="row"><a href="/edit/<%= operation.id %>"><%= operation.concept %></a></th>
+              <td scope="row"><a href="/edit/<%= operation.id %>"><%= operation.amount %></a></td>
+              <td scope="row"><a href="/edit/<%= operation.id %>"><%= operation.date.toLocaleDateString() %></a></td>
+              <td scope="row"><a href="/edit/<%= operation.id %>"><%= operation.category.name %></a> </td>
+            </tr>
+            <% } %>
+            <% } %>
+            <% })%> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </main>
+    <!-- <footer class="d-flex"> <div class="container">Este es el footer</div></footer> -->
+    <script src='./js/balance.js'></script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">    
+</head>
+<script type="text/javascript">
+    window.onload = function(){
+        fecha = new Date();
+        texto = document.getElementById("date");
+        texto.value = fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear();
+    }
+    </script>
+<body>
+    <header class="d-flex"><div class="container"><div class="logo">Control de Gastos</div>
+        <nav><a href="/"> Home</a> / <a href="/operations/in">VER INGRESOS</a> //  <a href="/operations/out">VER EGRESOS</a> / <a href="/create">Alta de comprobantes</a> </nav>
+    </div></header>
+    <main class="d-flex">
+        <div class="container">
+        <h1>Alta de Operaciones</h1>
+        <form action="/create" id="create" method="POST" class="block">
+        <div class="fr_label">
+        <label class="fr_lbltexto" for="concept"> Concepto </label>
+        <input type="text" name="concept" id="concept" value="" required >
+    </div>
+    <div class="fr_label">
+        <label class="fr_lbltexto" for="amount"> Monto </label>
+        <input type="text" name="amount" id="amount" value="" required>
+    </div>
+    <div class="fr_label">
+        <label class="fr_lbltexto" for="date"> Fecha </label>
+        <input type="date" name="date" id="date" value="" required>
+        
+    </div>
+    <div class="fr_label">
+        <label class="fr_lbltexto" for="type"> Operación </label>
+        <select name="typeId" id="typeId" required>
+            <option value="" disabled selected>- Seleccione Operacion - </option>
+            <% allTypes.forEach(type => { %>
+                <option value="<%= type.id %>"
+                    <% if (locals && locals.oldData && oldData.typeId == type.id) { %>
+                        selected="selected" 
+                    <% } %>>
+                    <%= type.name %>
+                </option>
+                <% }); %>
+        </select>
+    </div>
+    <div class="fr_label">
+        <label class="fr_lbltexto" for="type"> Categoria de Operación </label>
+        <select name="categoryId" id="categoryId" required>
+            <option value="" disabled selected>- Seleccione tipo de operacion - </option>
+            <% allCategories.forEach(category => { %>
+                <option value="<%= category.id %>"
+                    <% if (locals && locals.oldData && oldData.categoryId == category.id) { %>
+                        selected="selected" 
+                    <% } %>>
+                    <%= category.name %>
+                </option>
+                <% }); %>
+        </select>
+    </div>
+   
+    <div class="fr_registro">
+        
+            <button onclick="goBack()">Volver</button>
+      
+        
+            <button type="submit">Crear</button>
+        
+    </div>
+
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+    </script>
+
+</form> 
+    </div>
+    </main>
+    <footer class="d-flex"> <div class="container">Este es el footer</div></footer>
+</body>
+</html>

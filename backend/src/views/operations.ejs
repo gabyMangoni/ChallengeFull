@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">    
+</head>
+<body>
+    <header class="d-flex"><div class="container"><div class="logo">Control de Gastos</div>
+      <nav><a href="/"> Home</a> / <a href="/operations">Listado de comprobantes</a> / <a href="/create">Alta de comprobantes</a> </nav></div></header>
+    <main class="d-flex">
+        <div class="container">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+    <h1>LISTADO DE OPERACIONES</h1>
+    <a href="/operations/in">VER INGRESOS</a> //  <a href="/operations/out">VER EGRESOS</a>
+    <ul>
+      <% operations.forEach(operation => { %>
+        <% if (types == operation.category.id) { %>
+          <li> 
+            <a href="/edit/<%= operation.id %>"><%= operation.concept %> <%= operations.amount %> <%= operations.date %> <%= operations.categoryId %> <%= operations.categoryTypetId %>
+            </a>
+        </li>
+          <% } else if (types == null) {%>
+           
+            <li> 
+              <a href="/edit/<%= operation.id %>"><%= operation.concept %> <%= operations.amount %> <%= operations.date %> <%= operations.categoryId %> <%= operations.categoryTypetId %>
+              </a>
+          </li>
+
+            <% } %>
+        <% })%> 
+      </ul>
+      
+      </div>
+    </main>
+    <footer class="d-flex"> <div class="container">Este es el footer</div></footer>
+</body>
+</html>
