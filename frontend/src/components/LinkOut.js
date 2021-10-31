@@ -1,17 +1,17 @@
 import React from 'react';
 import TopBar from './TopBar';
 import Footer from './Footer';
-import TableOperationListIn from './TableOperationListIn'
+import TableOperationListOut from './TableOperationListOut'
 
 
-function LinkIn(){
+function LinkOut(){
     return(
         <React.Fragment>
             <div id="content-wrapper" class="d-flex flex-column">
                 <div id="content">
                     <TopBar />
                     <div className="cont-totales">
-                        <TableOperationListIn />
+                        <TableOperationListOut />
                     </div>
                     <Footer />
                 </div>
@@ -20,4 +20,4 @@ function LinkIn(){
     )
 }
 
-export default LinkIn;
+export default LinkOut;

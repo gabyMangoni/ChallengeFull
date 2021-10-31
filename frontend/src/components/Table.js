@@ -42,12 +42,13 @@ class Table extends Component {
   render() {
     return(
       <React.Fragment>
-        <table className="table bg-dark-thunder rounded table-responsive-sm">
+        <div className="table-responsive">
+        <table className="table bg-dark-thunder rounded ">
           <thead>
             <tr>
               {
                 this.props.heads.map( (head, i) =>
-                  <th className="text-gray" key={head.title + i} scope="col">{head.title}</th>
+                  <th className="text-gray yellow" key={head.title + i} scope="col">{head.title}</th>
                 )
               }
             </tr>
@@ -68,7 +69,7 @@ class Table extends Component {
           </tbody>
         </table>
 
-       
+        </div>
       </React.Fragment>
     )
   }

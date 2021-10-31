@@ -1,8 +1,9 @@
 import React from 'react';
 import image from '../assets/images/gastos.png';
 import ContentWrapper from './ContentWrapper';
-import LinkIn from './LinkIn';
-import LinkProdList from './LinkProdList';
+import ListIn from './LinkIn';
+import ListOut from './LinkOut';
+import Create from './LinkCreate';
 import NotFound from './NotFound';
 import { Link, Route, Switch } from "react-router-dom";
 
@@ -23,7 +24,7 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Totales -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link collapsed" to="/LinkIn">
+                    <Link className="nav-link collapsed" to="/ListIn">
                         <i className="fas fa-chart-pie"></i>
                         <span>Listado de Ingresos</span>
                     </Link>
@@ -31,15 +32,15 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Listado de productos -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/LinkProdList">
-                        <i className="fas fa-fw fa-table"></i>
+                    <Link className="nav-link" to="/ListOut">
+                    <i className="fas fa-chart-pie"></i>
                         <span>Listado de Egresos</span>
                     </Link>
                 </li>
 
                  {/*<!-- Nav Item - Listado de productos -->*/}
                  <li className="nav-item">
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/Create">
                         <i className="fas fa-fw fa-table"></i>
                         <span>Alta de Comprobantes</span>
                     </Link>
@@ -55,11 +56,14 @@ function SideBar(){
                 <Route exact path="/">
                     <ContentWrapper />
                 </Route>
-                <Route path="/LinkIn">
-                    <LinkIn />
+                <Route path="/ListIn">
+                    <ListIn />
                 </Route>
-                <Route path="/LinkProdList">
-                    <LinkProdList />
+                <Route path="/ListOut">
+                    <ListOut />
+                </Route>
+                <Route path="/Create">
+                    <Create />
                 </Route>
                 <Route component={NotFound} />
             </Switch>

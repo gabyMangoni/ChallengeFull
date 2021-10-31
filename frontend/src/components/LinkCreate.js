@@ -1,17 +1,17 @@
 import React from 'react';
 import TopBar from './TopBar';
 import Footer from './Footer';
-import TableProductList from './TableProductList'
+import Create from './Create'
 
 
-function LinkProdList(){
+function LinkCreate(){
     return(
         <React.Fragment>
             <div id="content-wrapper" class="d-flex flex-column">
                 <div id="content">
                     <TopBar />
                     <div className="cont-totales">
-                        <TableProductList />
+                        <Create />
                     </div>
                     <Footer />
                 </div>
@@ -20,4 +20,4 @@ function LinkProdList(){
     )
 }
 
-export default LinkProdList;
+export default LinkCreate;

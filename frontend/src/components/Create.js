@@ -1,11 +1,11 @@
 import React from 'react'
 
-const borrar = () => {
+const Create = () => {
     return (
         <div>
-            Hola
+            <h1>Hola Create</h1>
         </div>
     )
 }
 
-export default borrar
+export default Create

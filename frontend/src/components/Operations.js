@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ProductList from './ProductList';
 
-class Product extends Component {
+import OperationsList from './OperationsList';
+
+class Operations extends Component {
     constructor() {
         super();
 
@@ -12,7 +13,6 @@ class Product extends Component {
 
     async componentDidMount() {
         let props = await (await fetch('http://localhost:3001/api/operations')).json();
-        // console.log(props);
         if (props) {
             this.setState({operations: props.data.list})
             console.log(this.state.operations);
@@ -21,18 +21,20 @@ class Product extends Component {
     }
 
 
+
     render() {
         return (
             <React.Fragment>
-            {/*<!-- MOVIES LIST -->*/}
-            <h1 className="h3 mb-2 text-gray-800 ">Operaciones Egresos</h1>
+           
+            <div className="container-fluid">
+            <h1 className="h3 mb-2 text-gray-800 ">Operaciones Home</h1>
             
-            {/*<!-- DataTales Example -->*/}
+           
             <div className="card shadow mb-4">
                 <div className="card-body">
                     <div className="table-responsive">
                         <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                            <thead className="gris" >
                                 <tr>
                                     <th>Id</th>
                                     <th>Concepto</th>
@@ -41,7 +43,7 @@ class Product extends Component {
                                     <th>Categoria</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <tfoot className="gris">
                                 <tr>
                                     <th>Id</th>
                                     <th>Concepto</th>
@@ -53,7 +55,7 @@ class Product extends Component {
                             <tbody>
                                 {
                                     this.state.operations.map((operation,index) => {
-                                        return <ProductList  {...operation} key={index}  />
+                                        return <OperationsList  {...operation} key={index}  />
                                     })
                                 }
                             </tbody>
@@ -63,10 +65,11 @@ class Product extends Component {
 
                 
             </div>
+            </div>
             </React.Fragment>
         );
     }
 }
 
 
-export default Product;
+export default Operations;
