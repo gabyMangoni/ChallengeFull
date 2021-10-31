@@ -14,6 +14,16 @@ DB_PORT=3306 // Puerto de conexion
 DB_DIALECT=mysql
 </code></pre>
 
+### Tecnologías utilizadas:
+- EJS
+- CSS
+- JavaScript
+- Node.js
+- Express
+- MySQL
+- Sequelize
+- APIs
+
 
 # Sequelize ⌨
 

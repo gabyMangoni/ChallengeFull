@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors')
 const methodOverride = require('method-override');
 
 const PORT = process.env.PORT || 3001
@@ -13,6 +14,8 @@ app.use(express.json())
 //URL encode  - Para que nos pueda llegar la información desde el formulario al req.body
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+
+app.use(cors())
 
 //app.use('/', (req, res) => res.json({ clave: "con el server" }));
 

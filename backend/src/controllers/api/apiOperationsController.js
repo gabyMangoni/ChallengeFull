@@ -18,10 +18,10 @@ let apiOperationsController = {
                 include: [ 'category', 'type' ],
                 order: [
                     ['id', 'DESC']
-                ]
+                ],
+                limit: 10,
                 
-                });
-            // API que reemplaza a la funcion normal
+                })
         let response = {
             meta: {
                 status : 200,
@@ -32,7 +32,9 @@ let apiOperationsController = {
                 list: []
             }
         }
+        
         operations.forEach(operation => {
+            
             response.data.list.push({
                 id: operation.id,
                 concept: operation.concept,
