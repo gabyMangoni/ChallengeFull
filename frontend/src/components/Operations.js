@@ -7,14 +7,14 @@ class Operations extends Component {
         super();
 
         this.state ={
-            operations : []
+            operations : [],
         }
     }
 
     async componentDidMount() {
         let props = await (await fetch('http://localhost:3001/api/operations')).json();
         if (props) {
-            this.setState({operations: props.data.list})
+            this.setState({operations: props.response.data.list, })
             console.log(this.state.operations);
         }
 
@@ -28,8 +28,6 @@ class Operations extends Component {
            
             <div className="container-fluid">
             <h1 className="h3 mb-2 text-gray-800 ">Operaciones Home</h1>
-            
-           
             <div className="card shadow mb-4">
                 <div className="card-body">
                     <div className="table-responsive">
@@ -56,6 +54,8 @@ class Operations extends Component {
                                 {
                                     this.state.operations.map((operation,index) => {
                                         return <OperationsList  {...operation} key={index}  />
+                                        
+                                       
                                     })
                                 }
                             </tbody>

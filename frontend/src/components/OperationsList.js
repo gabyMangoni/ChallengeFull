@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 function OperationsList(props){
+    
     return (
         <React.Fragment>
             <tr>
@@ -14,4 +15,5 @@ function OperationsList(props){
         </React.Fragment>
     )
 }
+
 export default OperationsList;
