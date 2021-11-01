@@ -13,45 +13,89 @@ let apiOperationsController = {
         try{ 
             let operations = await Voucher.findAll({ 
                 attributes:[
-                    'id', 'concept', 'amount', 'date'
+                    'id', 'concept', 'amount', 'date', 'categoryTypetId', 'categoryId'
                 ],
                 include: [ 'category', 'type' ],
                 order: [
                     ['id', 'DESC']
-                ],
-                limit: 10,
+                ]
+                // limit: 10,
                 
+
                 })
+        
         let response = {
-            meta: {
-                status : 200,
-                total: operations.length,
-                url: '/api/operations'
-            },
-            data: {
+             data: {
                 list: []
             }
         }
-        
+        const outcomeValue = [];
+        const incomeValue = [];
         operations.forEach(operation => {
-            
-            response.data.list.push({
+        operation.categoryTypetId === 2
+                  ? outcomeValue.push(operation.amount)
+                  : incomeValue.push(operation.amount);
+              
+ 
+     // aca poner el balance
+        response.data.list.push({
                 id: operation.id,
                 concept: operation.concept,
-                amount: operation.amount,
+                amount: Number(operation.amount),
                 date: operation.date.toLocaleDateString(),
                 category: operation.category.name,
+                type: operation.categoryTypetId,
                 details: req.headers.host + `/api/operations/${operation.id}`
             })
-            return operation
+
+            // response.meta.balance.push({
+            //     balanceTotal
+            // })
+            return (operation)
         });
-       return res.json(response);
+        const spendingTotal = outcomeValue.reduce((acum, b) => acum + b, 0);
+        const incomeTotal = incomeValue.reduce((acum, b) => acum + b, 0);
+        const balanceTotal = incomeTotal - spendingTotal;
+
+        return res.status(200).json({
+            total: operations.length,
+            balance: balanceTotal,
+            response,
+            status: 200,
+          });
             
         }
         catch(error){
             console.log(error);
         }
     },
+
+    // list: (req, res) => {
+    //     Voucher.findAll({
+    //       attributes: ['id', 'concept', 'amount', 'date', 'categoryTypetId', 'categoryId'],
+    //     }).then((operations) => {
+    //       //Resuelvo el balance en el back
+    //       const outcomeValue = [];
+    //       const incomeValue = [];
+    //       operations.forEach(function (operations) {
+    //         operations.categoryTypetId === 2
+    //           ? outcomeValue.push(Number(operations.amount))
+    //           : incomeValue.push(Number(operations.amount));
+    //       });
+    //       const spendingTotal = outcomeValue.reduce((a, b) => a + b, 0);
+    //       const incomeTotal = incomeValue.reduce((a, b) => a + b, 0);
+    //       const balanceTotal = incomeTotal - spendingTotal;
+    
+    //       return res.status(200).json({
+    //         total: operations.length,
+    //         balance: balanceTotal,
+
+    //         data: operations,
+    //         status: 200,
+    //       });
+    //     });
+    //   },
+   
     listOut: async (req, res) =>{
         try{ 
             let operations = await Voucher.findAll({ 

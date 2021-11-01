@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Voucher.init({
     concept: DataTypes.STRING,
-    amount: DataTypes.DECIMAL,
+    amount: DataTypes.FLOAT,
     date: DataTypes.DATE,
     categoryId: DataTypes.INTEGER,
     categoryTypetId: DataTypes.INTEGER

@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       amount: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.FLOAT
       },
       date: {
         type: Sequelize.DATE
